@@ -1,0 +1,54 @@
+1月31日
+Positive num: 1
+Negative num: 0
+1月30日
+Positive num: 3
+Negative num: 1
+1月29日(比赛)
+Positive num: 160
+Negative num: 33
+1月28日(比赛)
+Positive num: 24
+Negative num: 1
+1月27日(比赛)
+Positive num: 43
+Negative num: 14
+1月26日(比赛)
+Positive num: 28
+Negative num: 7
+1月25日(比赛)
+Positive num: 11
+Negative num: 2
+1月24日(比赛)
+Positive num: 9
+Negative num: 4
+1月23日(比赛)
+Positive num: 4
+Negative num: 2
+1月22日(比赛)
+Positive num: 16
+Negative num: 12
+1月21日(比赛)
+Positive num: 6
+Negative num: 5
+1月20日(比赛)
+Positive num: 8
+Negative num: 6
+1月19日(比赛)
+Positive num: 9
+Negative num: 9
+1月18日(比赛)
+Positive num: 12
+Negative num: 13
+1月17日(比赛)
+Positive num: 4
+Negative num: 3
+1月16日(比赛)
+Positive num: 10
+Negative num: 8
+1月15日
+Positive num: 2
+Negative num: 0
+1月14日
+Positive num: 0
+Negative num: 0
