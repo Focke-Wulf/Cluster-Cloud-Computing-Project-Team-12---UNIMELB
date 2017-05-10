@@ -1,0 +1,14 @@
+{
+  "size": 10000,
+  "query": {
+    "bool": {
+        "should": [{
+            "match_phrase": {
+                "text": {
+                    "query": "sample"
+                }
+            }
+        }]
+    }
+  }
+}
