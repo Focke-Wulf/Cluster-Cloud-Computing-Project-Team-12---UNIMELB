@@ -1,0 +1,18 @@
+---
+- hosts: couchdb
+  sudo: true
+  tasks:
+    - name: "Generating environment"
+      script: /home/benjamin/scripts/db_env.sh
+    - name: "Install Couchdb"
+      script: /home/benjamin/scripts/db_install.sh
+    - name: "Configure Security"
+      script: /home/benjamin/scripts/db_configure.sh
+    - name: "change Bind_Address" 
+      lineinfile:
+        path: /home/couchdb/etc/local.ini
+        regexp: '\;bind_address = 127\.0\.0\.1'
+        insertafter: '\;bind_address = 127\.0\.0\.1 '
+        line: 'bind_address = 0.0.0.0'
+    - name: "restart couchdb"
+      command: sv restart couchdb

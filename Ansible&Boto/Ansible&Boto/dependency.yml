@@ -1,0 +1,21 @@
+---
+- hosts: nodes
+  sudo: true
+  tasks:
+    - name: Install screen
+      apt: pkg=screen state=installed update_cache=true
+
+    - name: install python pip
+      apt: pkg=python-pip state=installed
+
+    - name: check easy install
+      shell: easy_install -U pip
+
+    - name: install tweepy (pip)
+      shell: pip install tweepy
+
+    - name: install couchDB driver (pip)
+      shell: pip install CouchDB
+
+
+

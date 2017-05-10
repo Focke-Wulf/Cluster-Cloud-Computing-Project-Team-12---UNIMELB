@@ -1,0 +1,7 @@
+---
+- hosts: Node-mel
+  sudo: true
+  tasks:
+    - name: "Deploy_Melbourne_Harvester"
+      script: /home/benjamin/scripts/Melbourne_ice.sh
+

@@ -1,0 +1,7 @@
+---
+- hosts: Node_syd1
+  sudo: true
+  tasks:
+    - name: "Deploy_Sydeny_Harvester_1"
+      script: /home/benjamin/scripts/Sydney01_ice.sh
+
