@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8" />
+<title>Analysis</title>
+<link rel="stylesheet" href="css/fishBone.css" />
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="js/fishBone.js"></script>
+<script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
+<script>
+	data = [{ 'Match Date':'2017-04-15','Number of Positive ': 43, 'Number of Negative':10},
+        { 'Match Date':'2017-04-16','Number of Positive ': 3, 'Number of Negative':1},
+        { 'Match Date':'2017-04-17','Number of Positive ': 25, 'Number of Negative':7},
+        { 'Match Date':'2017-04-18','Number of Positive ': 0, 'Number of Negative':0},
+        { 'Match Date':'2017-04-19','Number of Positive ': 4, 'Number of Negative':4},
+        { 'Match Date':'2017-04-20','Number of Positive ': 6, 'Number of Negative':0},
+        { 'Match Date':'2017-04-21','Number of Positive ': 23, 'Number of Negative':8},
+        { 'Match Date':'2017-04-22','Number of Positive ': 6, 'Number of Negative':7},
+        { 'Match Date':'2017-04-23','Number of Positive ': 6, 'Number of Negative':7},
+        { 'Match Date':'2017-04-24','Number of Positive ': 4, 'Number of Negative':4},
+        { 'Match Date':'2017-04-25','Number of Positive ': 19, 'Number of Negative':8},
+        { 'Match Date':'2017-04-26','Number of Positive ': 2, 'Number of Negative':3},
+        { 'Match Date':'2017-04-27','Number of Positive ': 7, 'Number of Negative':2},
+        { 'Match Date':'2017-04-28','Number of Positive ': 12, 'Number of Negative':2},
+        { 'Match Date':'2017-04-29','Number of Positive ': 132, 'Number of Negative':42},
+        { 'Match Date':'2017-04-30','Number of Positive ': 31, 'Number of Negative':7},
+        { 'Match Date':'2017-05-01','Number of Positive ': 23, 'Number of Negative':12},
+        { 'Match Date':'2017-05-02','Number of Positive ': 7, 'Number of Negative':3},
+        { 'Match Date':'2017-05-03','Number of Positive ': 7, 'Number of Negative':3},
+        { 'Match Date':'2017-05-04','Number of Positive ': 6, 'Number of Negative':2},
+        { 'Match Date':'2017-05-05','Number of Positive ': 11, 'Number of Negative':5},
+        { 'Match Date':'2017-05-06','Number of Positive ': 26, 'Number of Negative':12},
+        { 'Match Date':'2017-05-07','Number of Positive ': 488, 'Number of Negative':117}
+        ];
+	$(function() {
+		$(".fishBone").fishBone(data);
+	});
+</script>
+</head>
+<body>
+
+<div class="container">
+
+</div>
+
+<div class="templatemo-content-wrapper">
+	<div class="templatemo-content">
+		<h1>Public response About Sydney FC</h1>
+		<div class="templatemo-charts">
+			<div class="row">
+
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="panel panel-info">
+						<div class="panel-heading">Time Line and Bar Chart</div>
+					</div>
+					<div class="row templatemo-chart-row">
+
+						<div class="fishBone"></div>
+
+						<div class="col-md-6 col-sm-6">
+							<div class="panel panel-primary">
+								<div class="panel-heading">Bar Chart</div>
+								<canvas id="templatemo-bar-chart"></canvas>
+							</div>
+						</div>
+
+						<div class="offer-item offer-1 animated fadeInLeft center-block">
+							<div class="templatemo-chart-box col-lg-3 col-md-3 col-sm-4 col-xs-12">
+								<canvas id="templatemo-doughnut-chart"></canvas>
+								<h4>Compare Pie</h4>
+								<span class="text-muted">Total Result</span>
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+			<div class="row">
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="label-warning"><a class="btn text-center alert-link" href="index.html">Return</a></div>
+
+<script src="js/Chart.min.js"></script>
+<script src="js/templatemo_script.js"></script>
+<script type="text/javascript">
+    // Line chart
+    var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
+    var lineChartData = {
+        labels : ["Match Date","2017-04-16","2017-04-17","2017-04-18","2017-04-19"
+            ,"2017-04-20","2017-04-21","2017-04-22","2017-04-23","2017-04-24","2017-04-25"
+            ,"2017-04-26","2017-04-27","2017-04-28","Match Date","2017-04-30","2017-05-1"
+            ,"2017-05-2","2017-05-3","2017-05-4","2017-05-5","2017-05-6","Match Date"
+				],
+        datasets : [
+            {
+                label: "My First dataset",
+                fillColor : "rgba(37,245,14,0.5)",
+                strokeColor : "rgba(220,220,220,1)",
+                pointColor : "rgba(220,220,220,1)",
+                pointStrokeColor : "#fff",
+                pointHighlightFill : "#fff",
+                pointHighlightStroke : "rgba(220,220,220,1)",
+                data : [43,7,2,0,4,6,23,6,6,4,19,2,7,12,132,13,23,7,7,6,11,26,484]
+            },
+            {
+                label: "My Second dataset",
+                fillColor : "rgba(255,82,7,0.4)",
+                strokeColor : "rgba(151,187,205,1)",
+                pointColor : "rgba(151,187,205,1)",
+                pointStrokeColor : "#fff",
+                pointHighlightFill : "#fff",
+                pointHighlightStroke : "rgba(151,187,205,1)",
+                data : [10,2,5,0,4,0,8,7,7,4,8,3,2,2,42,7,12,3,3,2,5,12,117]
+            }
+        ]
+
+    } // lineChartData
+
+    var pieChartData = [
+        {
+            value: 265,
+            color:"#F7464A",
+            highlight: "#FF5A5E",
+            label: "Neigative"
+        },
+        {
+            value: 850,
+            color: "#23D80E",
+            highlight: "#24FA0D",
+            label: "Positive"
+        }
+
+    ] // pie chart data
+
+
+
+
+
+
+
+    window.onload = function(){
+        var ctx_bar = document.getElementById("templatemo-bar-chart").getContext("2d");
+        var ctx_doughnut = document.getElementById("templatemo-doughnut-chart").getContext("2d");
+        window.myDoughnutChart = new Chart(ctx_doughnut).Doughnut(pieChartData,{responsive: true});
+        window.myBar = new Chart(ctx_bar).Bar(lineChartData, {
+            responsive: true
+        });
+
+
+
+    }
+</script>
+</body>
+</html>

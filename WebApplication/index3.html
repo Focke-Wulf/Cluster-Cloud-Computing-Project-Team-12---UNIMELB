@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+	<title>Cluster and Cloud Computing project</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/simple-line-icons.css">
+	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="css/templatemo_style.css">
+	<script src="js/d3.js"></script>
+	<!--<script src='https://api.mapbox.com/mapbox-gl-js/v0.36.0/mapbox-gl.js'></script>-->
+	<!--<link href='https://api.mapbox.com/mapbox-gl-js/v0.36.0/mapbox-gl.css' rel='stylesheet' />-->
+	<style>
+		/* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+		#map {
+			height: 600px;
+			width: 100%;
+		}
+
+		.yel{
+			background-color: #ec971f;
+		}
+
+		.green{
+			background-color:green;
+		}
+
+
+
+	</style>
+</head>
+<body>
+<header class="site-header container animated fadeInDown">
+	<div class="header-wrapper">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="site-branding">
+					<a href="#"><h1>Team 12</h1></a>
+				</div>
+			</div>
+			<a href="#" class="toggle-nav hidden-md hidden-lg">
+				<i class="fa fa-bars"></i>
+			</a>
+			<div class="col-md-8">
+				<nav id="nav" class="main-navigation hidden-xs hidden-sm">
+					<ul class="main-menu">
+						<li><a href="index.html">Project Library</a></li>
+						<li><a href="index2.html">Abbott</a></li>
+						<li><a href="index3.html">Refugees</a></li>
+						<li><a href="index4.html">Racial</a></li>
+						<li><a href="index5.html">AUS Open</a></li>
+						<li><a href="index6.html">Sydney FC</a></li>
+					</ul>
+				</nav>
+				<nav class="main-navigation menu-responsive hidden-md hidden-lg">
+					<ul class="main-menu">
+						<li><a href="index.html">Project Library</a></li>
+						<li><a href="index2.html">Abbott</a></li>
+						<li><a href="index3.html">Refugees</a></li>
+						<li><a href="index4.html">Racial</a></li>
+						<li><a href="index5.html">AUS Open</a></li>
+						<li><a href="index6.html">Sydney FC</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+</header>
+
+	<div id="menu-container">
+        <div id="menu-1" class="homepage home-section container">
+			<div class="animated fadeInUp inner-story text-center">
+				<h1 class="">Analysis the Support of Refugees in Melbourne</h1>
+				<h5 class="">Source from Twitter</h5>
+			</div>
+			<div id="facts"  class="sections">
+			<div class="container">
+				<h3 class="sections-head" id="info-box2">Result Of Data</h3>
+				<h1 class="hot">Education Level :  <span id="info-box5">0.0</span>   - MAX is 1.0</h1>
+				<div class="small-separator ws"></div>
+				<ul>
+					<!-- fact 1-->
+					<li class="grid-2">
+						<div class="milestone-counter">
+							<div class="stats animaper">
+								<h6>Score : <span id="info-box3">0</span></h6>
+							</div>
+						</div>
+					</li>
+
+					<!-- fact 2-->
+					<li class="grid-2">
+						<div class="milestone-counter">
+							<div class="stats animaper">
+								<h6>Support  : <span id="info-box">0</span></h6>
+							</div>
+
+						</div>
+					</li>
+
+					<!-- fact 3-->
+					<li class="grid-2">
+						<div class="milestone-counter">
+							<div class="stats animaper">
+								<h6>Against :<span id="info-box1">0</span></h6>
+							</div>
+
+						</div>
+
+
+					</li>
+				</ul>
+
+				</div>
+			</div>
+
+			<div class="border-top"></div>
+			<div id="map"></div>
+
+			<!--this is about the map script -->
+			<script>
+                var map;
+
+                function readjson() {
+
+                }
+
+                function loadGeoJsonString(geoString) {
+                    var geojson = JSON.parse(geoString);
+                    map.data.addGeoJson(geojson);
+                }
+
+                function initMap() {
+                    map = new google.maps.Map(document.getElementById('map'), {
+                        center: {lat: -37.8136, lng: 144.99758596},
+                        zoom: 10,
+                        styles: [
+                            {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
+                            {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
+                            {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
+                            {
+                                featureType: 'administrative.locality',
+                                elementType: 'labels.text.fill',
+                                stylers: [{color: '#d59563'}]
+                            },
+                            {
+                                featureType: 'poi',
+                                elementType: 'labels.text.fill',
+                                stylers: [{color: '#d59563'}]
+                            },
+                            {
+                                featureType: 'poi.park',
+                                elementType: 'geometry',
+                                stylers: [{color: '#263c3f'}]
+                            },
+                            {
+                                featureType: 'poi.park',
+                                elementType: 'labels.text.fill',
+                                stylers: [{color: '#6b9a76'}]
+                            },
+                            {
+                                featureType: 'road',
+                                elementType: 'geometry',
+                                stylers: [{color: '#38414e'}]
+                            },
+                            {
+                                featureType: 'road',
+                                elementType: 'geometry.stroke',
+                                stylers: [{color: '#212a37'}]
+                            },
+                            {
+                                featureType: 'road',
+                                elementType: 'labels.text.fill',
+                                stylers: [{color: '#9ca5b3'}]
+                            },
+                            {
+                                featureType: 'road.highway',
+                                elementType: 'geometry',
+                                stylers: [{color: '#38414e'}]
+                            },
+                            {
+                                featureType: 'road.highway',
+                                elementType: 'geometry.stroke',
+                                stylers: [{color: '#1f2835'}]
+                            },
+                            {
+                                featureType: 'road.highway',
+                                elementType: 'labels.text.fill',
+                                stylers: [{color: '#9ca5b3'}]
+                            },
+                            {
+                                featureType: 'transit',
+                                elementType: 'geometry',
+                                stylers: [{color: '#2f3948'}]
+                            },
+                            {
+                                featureType: 'transit.station',
+                                elementType: 'labels.text.fill',
+                                stylers: [{color: '#d59563'}]
+                            },
+                            {
+                                featureType: 'water',
+                                elementType: 'geometry',
+                                stylers: [{color: '#17263c'}]
+                            },
+                            {
+                                featureType: 'water',
+                                elementType: 'labels.text.fill',
+                                stylers: [{color: '#515c6d'}]
+                            },
+                            {
+                                featureType: 'water',
+                                elementType: 'labels.text.stroke',
+                                stylers: [{color: '#17263c'}]
+                            }
+                        ]
+                    });
+
+
+					map.data.loadGeoJson('http://localhost/Melb_re.geojson');
+					map.data.setStyle(function (feature) {
+					    return ({
+						fillColor : feature.getProperty('color'),
+						strokeWeight:1
+						});
+                    });
+
+                    map.data.addListener('mouseover', function(event) {
+                        document.getElementById('info-box').textContent =
+                            event.feature.getProperty('pos');
+                        document.getElementById('info-box1').textContent =
+                            event.feature.getProperty('neg');
+                        document.getElementById('info-box2').textContent =
+                            event.feature.getProperty('vic_loca_2');
+                        document.getElementById('info-box3').textContent =
+                            event.feature.getProperty('score');
+                        document.getElementById('info-box5').textContent =
+                            event.feature.getProperty('edu');
+                    });
+
+                }
+
+			</script>
+			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBM5A86_JxNucM1pUNeI6eMqXlkiVYkGV4&callback=initMap"
+					async defer></script>
+
+			<div>
+
+				<div class="row">
+					<div class="offer-item offer-1 animated fadeInLeft center-block">
+						<div class="templatemo-chart-box col-lg-3 col-md-3 col-sm-4 col-xs-12">
+							<canvas id="templatemo-doughnut-chart"></canvas>
+							<h4>Compare Pie</h4>
+							<span class="text-muted">Total Result</span>
+						</div>
+					</div>
+
+					<div class="offer-item  offer-2 col-md-6 col-sm-6 fadeInRight">
+						<div class="panel panel-success">
+							<div class="panel-heading">Relation Chart</div>
+							<canvas id="templatemo-line-chart"></canvas>
+						</div>
+					</div>
+
+					<div class="col-md-6">
+						<div class="offer-item offer-2 animated fadeInRight">
+							<figure>
+							</figure>
+							<div class="offer-content">
+								<img class="red" height="20px" width="20px">
+								<h6 class="h5">Against: 18</h6>
+								<img class="green" height="20px" width="20px">
+								<h6 class="h5">Support: 88</h6>
+								<img class="yel" height="20px" width="20px">
+								<h6 class="h5">Normal : 12</h6>
+								<span class="offer-left"><i></i></span>
+								<span class="offer-right"><i></i></span>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				<!--
+				This script is the Circle continer.
+				-->
+				<script src="js/jquery.min.js"></script>
+				<script src="js/bootstrap.min.js"></script>
+				<script src="js/Chart.min.js"></script>
+				<script src="js/templatemo_script.js"></script>
+				<script type="text/javascript">
+
+                    var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
+                    var lineChartData = {
+                        labels : ["edu_level 20%","edu_level 30%","edu_level 40%","edu_level 50%","edu_level 60%","edu_level 70%","edu_level 80%"],
+                        datasets : [
+                            {
+                                label: "My First dataset",
+                                fillColor : "rgba(243,12,12,0.2)",
+                                strokeColor : "rgba(193,14,14,1)",
+                                pointColor : "rgba(193,14,14,1)",
+                                pointStrokeColor : "#fff",
+                                pointHighlightFill : "#fff",
+                                pointHighlightStroke : "rgba(220,220,220,1)",
+                                data : [5,2,2,2,5,2,0]
+                            },
+                            {
+                                label: "My Second dataset",
+                                fillColor : "rgba(30,236,16,0.2)",
+                                strokeColor : "rgba(17,104,10,1)",
+                                pointColor : "rgba(17,104,10,1)",
+                                pointStrokeColor : "#fff",
+                                pointHighlightFill : "#fff",
+                                pointHighlightStroke : "rgba(151,187,205,1)",
+                                data : [19,10,16,13,21,9,0]
+                            }
+                        ]
+
+                    }
+
+                    var pieChartData = [
+                        {
+                            value: 18,
+                            color:"#F7464A",
+                            highlight: "#FF5A5E",
+                            label: "Neigative"
+                        },
+                        {
+                            value: 88,
+                            color: "#23D80E",
+                            highlight: "#24FA0D",
+                            label: "Support"
+                        },
+                        {
+                            value: 12,
+                            color: "#FDB45C",
+                            highlight: "#FFC870",
+                            label: "Normal"
+                        }
+                    ] // pie chart data
+
+                    window.onload = function(){
+                        var ctx_line = document.getElementById("templatemo-line-chart").getContext("2d");
+                        var ctx_doughnut = document.getElementById("templatemo-doughnut-chart").getContext("2d");
+                        window.myDoughnutChart = new Chart(ctx_doughnut).Doughnut(pieChartData,{responsive: true});
+                        window.myLine = new Chart(ctx_line).Line(lineChartData, {responsive: true});
+                    }
+
+				</script>
+
+
+
+			</div>
+		</div>
+	</div>
+
+
+	<footer class="site-footer container text-center">
+
+		<div class="row">
+			<div class="col-md-12 copyright">
+				<p>Copyright &copy; 2017 <a href="#">University of Melbourne</a></p>
+			</div>
+		</div>
+	</footer>
+	<!-- templatemo 421 raleway -->
+	<span class="border-top"></span>
+	<span class="border-left"></span>
+	<span class="border-right"></span>
+	<span class="border-bottom"></span>
+	<span class="shape-1"></span>
+	<span class="shape-2"></span>
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/templatemo_custom.js"></script>
+	<!--=============== javascript ===============-->
+
+</body>
+</html>
