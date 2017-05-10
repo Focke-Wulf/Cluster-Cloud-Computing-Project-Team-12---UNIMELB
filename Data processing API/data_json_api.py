@@ -1,32 +1,32 @@
 import json
 from pprint import pprint
 import googlemaps
-
-# gmaps = googlemaps.Client(key='AIzaSyDXDjtp2LFKmm19g5geNng4xFfpLubAECc')
-# coordinate_filename = 'aaa.json'
-allsubInfor_filename = 'melbourne.geojson'
+gmaps = googlemaps.Client(key='AIzaSyDXDjtp2LFKmm19g5geNng4xFfpLubAECc')
+# User need to input the file name
+coordinate_filename = 'a json FILE'
+allsubInfor_filename = 'a jSON FILE'
+analysis_file = 'a Json File'
+# function API
 sublist=[]
-analysis_file = 'qishi.json'
-# def get_subInfo_by_coord():
-#     with open(coordinate_filename,'r',encoding='UTF-8') as getcoord:
-#         coord_info = json.load(getcoord)
-#     for i in coord_info:
-#         if i['coordinates'] == [0, 0]:
-#             continue
-#         else:
-#             tu_coord = tuple((i['coordinates'][0],i['coordinates'][1]))
-#             subInfo = get_sub_name(tu_coord)
-#
-# def get_sub_name(sub):
-#     reverse_geocode_result = gmaps.reverse_geocode(sub)
-#     for i in reverse_geocode_result[0]['address_components']:
-#         if i['types'] == ['locality', 'political']:
-#             subname = i['long_name']
-#             subname = subname.upper()
-#             print(subname)
-#         else:
-#             subname = None
-#     return subname
+def get_subInfo_by_coord():
+    with open(coordinate_filename,'r',encoding='UTF-8') as getcoord:
+        coord_info = json.load(getcoord)
+    for i in coord_info:
+        if i['coordinates'] == [0, 0]:
+            continue
+        else:
+            tu_coord = tuple((i['coordinates'][0],i['coordinates'][1]))
+            subInfo = get_sub_name(tu_coord)
+def get_sub_name(sub):
+    reverse_geocode_result = gmaps.reverse_geocode(sub)
+    for i in reverse_geocode_result[0]['address_components']:
+        if i['types'] == ['locality', 'political']:
+            subname = i['long_name']
+            subname = subname.upper()
+            print(subname)
+        else:
+            subname = None
+    return subname
 
 
 
@@ -76,8 +76,6 @@ def get_score_(what_sub_info):
                     score_num = (pos_num - neg_num)/(pos_num + neg_num)
     score_num = round(score_num,2)
     return score_num
-
-
 
 def set_color_by_score(what_score):
     if what_score == 0:
@@ -142,6 +140,7 @@ def coord__analysis():
 
 
 
+                
 
 def set_color_by_score_v2(what_score):
     if what_score == 0:
@@ -207,33 +206,6 @@ def coord__analysis_v2():
 
 
 coord__analysis_v2()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 def acc_all ():
